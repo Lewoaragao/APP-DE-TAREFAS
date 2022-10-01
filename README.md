@@ -2,9 +2,9 @@
 `Documentação em desenvolvimento...`
 ### Menu:
 - <a href="#sobre">Sobre</a>
-- <a href="#tecnologiasUsadas">Tecnologias usadas</a>
 - <a href="#emDesenvolvimento">Em desenvolvimento</a>
 - <a href="#comoContribuir">Como contribuir</a>
+- <a href="#tecnologiasUsadas">Tecnologias usadas</a>
 
 ### <p id="sobre">Sobre</p>
 > Esse projeto foi feito para treinar habilidades em JavaScript e distribuir para a comunidade <i>Open Source</i> para o aprendizado ou consulta do código.</p>
