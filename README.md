@@ -11,12 +11,20 @@
 > Está sendo simulado um aplicativo de tarefas, onde cada tarefa está baseado no usuário que estará logado, dados salvos só localmente no Web SQL, para conferir basta clicar com o <strong>botão direito na página > Inspecionar > Aplicativo > Web SQL</strong>, lá estarão as tabelas criadas através de querys no JavaScript com SQLite.
 
 ### <p id="emDesenvolvimento">Em desenvolvimento</p>
+
+* Tarefas
 - [x] Tela de tarefas
 - [x] Lógica de tarefas
+
+* Cadastro
 - [ ] Tela de cadastro
 - [ ] Lógica de cadastro
+
+* Login
 - [ ] Tela de login
 - [ ] Lógica de login
+
+* Início
 - [ ] Tela de início
 - [ ] Tela de sobre
 
