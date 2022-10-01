@@ -12,7 +12,6 @@ var nomeTarefaDepois
 var idTarefaEditada = null
 var btnCriar = document.querySelector('#btnCriar')
 var btnConfirmarEdicao = document.querySelector('#btnConfirmarEdicao')
-var btnVoltaTopo = document.querySelector('#btnVoltaTopo')
 
 // VARIÁVEIS GERAIS
 var estadoTarefa = "Não feita"
@@ -42,11 +41,6 @@ btnCriar.addEventListener("click", function () {
     } else {
         alert("Obrigatório preencher campo nome da tarefa...")
     }
-})
-
-// AÇÃO DE VOLTAR AO TOPO NO BOTÃO
-btnVoltaTopo.addEventListener("click", function () {
-    window.scrollTo(0, 0)
 })
 
 // MAPEAMENTO DE ATALHOS
