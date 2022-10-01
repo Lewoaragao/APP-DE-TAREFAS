@@ -13,26 +13,9 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3"></nav>
+
     <main class="container d-flex flex-wrap flex-column justify-content-center">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-            <a class="navbar-brand">LISTA DE TAREFAS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/componentes/perfil/perfil.html">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
         <div id="divCriarNomeTarefa" class="input-group mb-3">
             <input class="form-control" type="text" id="nomeTarefa" placeholder="Nome da tarefa..." autofocus="true">
             <button class="btn btn-primary mx-1" type="button" id="btnCriar">Criar</button>
@@ -40,7 +23,7 @@
         </div>
 
         <div id="divEditarNomeTarefa" class="input-group mb-3 d-none">
-            <input class="form-control" type="text" id="nomeTarefaEditada" onkeypress="lerNomeTarefaDepois(this)"
+            <input class="form-control" type="text" id="nomeTarefaEditada"
                 onfocus="this.selectionStart = this.selectionEnd = this.value.length;" autofocus="true">
 
             <button class="btn btn-success ml-1" id="btnConfirmarEdicao">
@@ -50,10 +33,10 @@
             </button>
         </div>
 
-        <table id="tabelaTarefas" class="table table-hover px-0">
+        <table id="tabelaTarefas" class="table table-hover pr-0">
             <thead class="thead-light">
                 <tr>
-                    <th class="px-0">ID</th>
+                    <th class="pr-0">ID</th>
                     <th>Tarefa</th>
                     <th>Data</th>
                     <th>Estado</th>
@@ -82,6 +65,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="scriptTarefas.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
