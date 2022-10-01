@@ -7,6 +7,9 @@ var divCriarNomeTarefa = document.querySelector('#divCriarNomeTarefa')
 var divEditarNomeTarefa = document.querySelector('#divEditarNomeTarefa')
 var nomeTarefa = document.querySelector('#nomeTarefa')
 var nomeTarefaEditada = document.querySelector('#nomeTarefaEditada')
+var nomeTarefaAntes
+var nomeTarefaDepois
+var idTarefaEditada = null
 var btnCriar = document.querySelector('#btnCriar')
 var btnConfirmarEdicao = document.querySelector('#btnConfirmarEdicao')
 var btnVoltaTopo = document.querySelector('#btnVoltaTopo')
@@ -144,13 +147,23 @@ function editarTarefa(id) {
     divEditarNomeTarefa.classList.remove("d-none")
 
     nomeTarefaEditada.value = tarefaEditar.innerText
+    idTarefaEditada = id
 
-    btnConfirmarEdicao.addEventListener("click", (id) => {
-        if(nomeTarefaEditada.value != tarefaEditar.innerText) {
-            confirmarEdicao(id)
-        }
-    })
+    nomeTarefaAntes = tarefaEditar.innerText
 }
+
+function lerNomeTarefaDepois(elemento) {
+    nomeTarefaDepois = elemento.value
+    console.log(nomeTarefaDepois)
+}
+
+btnConfirmarEdicao.addEventListener("click", () => {
+    if(nomeTarefaAntes != nomeTarefaDepois && nomeTarefaDepois != null) {
+        confirmarEdicao(idTarefaEditada)
+    } else {
+        alert("Mesmo nome de tarefa.")
+    }
+})
 
 function confirmarEdicao(id) {
     let result = confirmarAcao("CONFIRMAR EDIÇÃO")
