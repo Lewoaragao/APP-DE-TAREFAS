@@ -11,6 +11,7 @@ var nomeTarefaAntes
 var nomeTarefaDepois
 var idTarefaEditada = null
 var btnCriar = document.querySelector('#btnCriar')
+var btnLimparLista = document.querySelector('#btnLimparLista')
 var btnConfirmarEdicao = document.querySelector('#btnConfirmarEdicao')
 
 // VARIÁVEIS GERAIS
