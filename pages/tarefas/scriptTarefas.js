@@ -178,10 +178,13 @@ function excluirTarefa(id) {
 }
 
 btnLimparLista.addEventListener("click", () => {
-    db.transaction(function (tx) {
-        tx.executeSql('DELETE FROM tarefas')
-    })
-    location.reload()
+    var result = confirmarAcao("LIMPAR LISTA")
+    if (result) {
+        db.transaction(function (tx) {
+            tx.executeSql('DELETE FROM tarefas')
+        })
+        location.reload()
+    }
 })
 
 function confirmarAcao(acao) {
