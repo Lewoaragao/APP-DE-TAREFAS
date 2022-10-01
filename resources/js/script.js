@@ -1,6 +1,5 @@
 // CONSULTANDO URL LOCALHOST
-const LOCALHOST = window.location
-console.log(LOCALHOST)
+const LOCALHOST = window.location.href
 
 // ADICIONANDO DINAMICAMENTE ELEMENTOS NO HTML
 // MENU GERAL
@@ -16,22 +15,22 @@ NAV.innerHTML = `
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages/cadastrar/cadastrar.html">Cadastrar</a>
+                    <a class="nav-link" href="${LOCALHOST}/pages/cadastrar/cadastrar.html">Cadastrar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages/login/login.html">Login</a>
+                    <a class="nav-link" href="${LOCALHOST}/pages/login/login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages/tarefas/tarefas.html">Tarefas</a>
+                    <a class="nav-link" href="${LOCALHOST}/pages/tarefas/tarefas.html">Tarefas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages/perfil/perfil.html">Perfil</a>
+                    <a class="nav-link" href="${LOCALHOST}/pages/perfil/perfil.html">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages/sobre/sobre.html">Sobre</a>
+                    <a class="nav-link" href="${LOCALHOST}/pages/sobre/sobre.html">Sobre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Sair</a>
+                    <a class="nav-link" href="${LOCALHOST}/">Sair</a>
                 </li>
             </ul>
         </div>
