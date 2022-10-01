@@ -12,22 +12,34 @@
     <title>Tarefas</title>
 </head>
 
-<body class="container">
-    <main class="d-flex flex-wrap flex-column align-items-center justify-content-center">
-        <nav class="my-3">
-            <a class="btn btn-primary btn-sm" href="/componentes/perfil/perfil.html">Perfil</button>
-            <a class="btn btn-danger btn-sm" href="/index.html">Sair</a>
-        </nav>
+<body>
+    <main class="container d-flex flex-wrap flex-column justify-content-center">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+            <a class="navbar-brand">LISTA DE TAREFAS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <h1>LISTA DE TAREFAS</h1>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/componentes/perfil/perfil.html">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Sair</a>
+                    </li>
+            </div>
+        </nav>
 
         <div id="divCriarNomeTarefa" class="input-group mb-3">
             <input class="form-control" type="text" id="nomeTarefa" placeholder="Nome da tarefa..." autofocus="true">
-            <input class="btn btn-primary ml-1" type="button" id="btnCriar" value="Criar">
+            <button class="btn btn-primary mx-1" type="button" id="btnCriar">Criar</button>
+            <button class="btn btn-secondary btn-sm">Limpar lista</button>
         </div>
 
         <div id="divEditarNomeTarefa" class="input-group mb-3 d-none">
-            <input class="form-control" type="text" id="nomeTarefaEditada"
+            <input class="form-control" type="text" id="nomeTarefaEditada" onkeypress="lerNomeTarefaDepois(this)"
                 onfocus="this.selectionStart = this.selectionEnd = this.value.length;" autofocus="true">
 
             <button class="btn btn-success ml-1" id="btnConfirmarEdicao">
@@ -53,9 +65,11 @@
         </table>
     </main>
 
-    <button id="btnVoltaTopo" type="button" class="btn btn-info" data-toggle="tooltip" data-placement="top"
+    <button id="btnVoltaTopo" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top"
         title="Atalho: tecla Home">
-        Topo
+        <span class="material-icons d-flex align-items-center justify-content-center">
+            expand_less
+        </span>
     </button>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
