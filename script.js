@@ -1,7 +1,7 @@
 // ADICIONANDO DINAMICAMENTE ELEMENTOS NO HTML
 // MENU GERAL
-const nav = document.querySelector('nav');
-nav.innerHTML = `
+const NAV = document.querySelector('nav');
+NAV.innerHTML = `
 <a class="navbar-brand">LISTA DE TAREFAS</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
