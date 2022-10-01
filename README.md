@@ -12,6 +12,7 @@
 
 ### <p id="emDesenvolvimento">Em desenvolvimento</p>
 - [x] Tela de tarefas
+- [x] Lógica de tarefas
 - [ ] Tela de cadastro
 - [ ] Lógica de cadastro
 - [ ] Tela de login
