@@ -1,3 +1,8 @@
 html {
     scroll-behavior: smooth;
 }
+
+.imgIcon {
+    width: 25px;
+    height: 25px;
+}
