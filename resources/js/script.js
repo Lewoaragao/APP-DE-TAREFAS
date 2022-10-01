@@ -1,17 +1,25 @@
+// VARIÁVEIS GLOBAIS
+const NAV = document.querySelector('nav')
+const FOOTER = document.querySelector('footer')
+
+// VARIÁVEIS LOCAIS
+var origem = window.location.origin
+
 // CONSULTANDO URL LOCALHOST
-// COMENTAR QUANDO FOR DESENVOLVER 
-
-// COMENTAR PARA MANDA PARA PRODUÇÃO
-// const LOCALHOST_DESENVOLVIMENTO = window.location.origin
-// const LOCALHOST = LOCALHOST_DESENVOLVIMENTO
-
-// DESCOMENTAR QUANDO FOR PARA PRODUÇÃO
-const LOCAL_REPOSITORIO_GITHUB = "/APP-DE-TAREFAS"
-const LOCALHOST = LOCAL_REPOSITORIO_GITHUB
+switch (origem) {
+    case "https://lewoaragao.github.io":
+        LOCALHOST = origem + "/APP-DE-TAREFAS"
+        break
+    case "http://127.0.0.1:5080":
+        LOCALHOST = origem
+        break
+    default:
+        document.innerHTML = `ERRO`
+        break
+}
 
 // ADICIONANDO DINAMICAMENTE ELEMENTOS NO HTML
 // MENU GERAL
-const NAV = document.querySelector('nav');
 NAV.innerHTML = `
     <div class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <a class="navbar-brand" href="${LOCALHOST}/index.html">LISTA DE TAREFAS</a>
@@ -46,11 +54,10 @@ NAV.innerHTML = `
 `
 
 // FOOTER
-const FOOTER = document.querySelector('footer')
 FOOTER.innerHTML = `
     <hr class="mt-5">
     <div class="mx-3 my-3 d-flex flex-row-reverse">
-        <button id="btnVoltaTopo" type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top"
+        <button onclick="subirProTopo()" type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top"
         title="Atalho: tecla Home">
             <span class="material-icons d-flex align-items-center justify-content-center">
                 expand_less
@@ -64,6 +71,6 @@ FOOTER.innerHTML = `
     </div>
 `
 // AÇÃO DE VOLTAR AO TOPO NO BOTÃO
-btnVoltaTopo.addEventListener("click", function () {
+function subirProTopo() {
     window.scrollTo(0, 0)
-})
+}
