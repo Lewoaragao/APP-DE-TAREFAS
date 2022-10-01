@@ -1,3 +1,7 @@
+// CONSULTANDO URL LOCALHOST
+const LOCALHOST = window.location
+console.log(LOCALHOST)
+
 // ADICIONANDO DINAMICAMENTE ELEMENTOS NO HTML
 // MENU GERAL
 const NAV = document.querySelector('nav');
