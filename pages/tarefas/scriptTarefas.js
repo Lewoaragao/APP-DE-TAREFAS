@@ -34,7 +34,10 @@ var dataAtual = `${dia}/${mes}/${ano}`
 // REMOVENDO EVENTO ENVIAR DO FORM
 btnCriar.addEventListener("click", function () {
     if (nomeTarefa.value != "") {
-        criar()
+        let result = confirmarAcao("CRIAR")
+        if(result) {
+            criar()
+        }
     } else {
         alert("Obrigatório preencher campo nome da tarefa...")
     }
@@ -85,9 +88,9 @@ function popularTarefas(tx, results) {
 
         for (i = 0; i < len; i++) {
             dados.innerHTML += `
-                    <tr>
-                        <td>${row[i].id}</td>
-                        <td id="tarefa${row[i].id}">${row[i].tarefa}</td>
+                    <tr class="px-0">
+                        <td class="px-0">${row[i].id}</td>
+                        <td class="px-0" id="tarefa${row[i].id}">${row[i].tarefa}</td>
                         <td>${row[i].data_cadastro}</td>
                         <td>${row[i].estado_tarefa}</td>
                         <td>
