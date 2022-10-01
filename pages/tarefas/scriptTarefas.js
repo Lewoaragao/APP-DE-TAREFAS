@@ -7,8 +7,6 @@ var divCriarNomeTarefa = document.querySelector('#divCriarNomeTarefa')
 var divEditarNomeTarefa = document.querySelector('#divEditarNomeTarefa')
 var nomeTarefa = document.querySelector('#nomeTarefa')
 var nomeTarefaEditada = document.querySelector('#nomeTarefaEditada')
-var nomeTarefaAntes
-var nomeTarefaDepois
 var idTarefaEditada = null
 var btnCriar = document.querySelector('#btnCriar')
 var btnLimparLista = document.querySelector('#btnLimparLista')
@@ -33,7 +31,7 @@ if (mes < 10) { mes = "0" + mes }
 var dataAtual = `${dia}/${mes}/${ano}`
 
 // REMOVENDO EVENTO ENVIAR DO FORM
-btnCriar.addEventListener("click", function () {
+btnCriar.addEventListener("click", () => {
     if (nomeTarefa.value != "") {
         // let result = confirmarAcao("CRIAR")
         // if(result) {
@@ -45,7 +43,7 @@ btnCriar.addEventListener("click", function () {
 })
 
 // MAPEAMENTO DE ATALHOS
-document.addEventListener("keypress", function (e) {
+document.addEventListener("keypress", (e) => {
     // console.log(e.key)
 
     // TECLA
@@ -133,10 +131,8 @@ function criar() {
 }
 
 function editar(id) {
-    let result = confirmarAcao("EDITAR")
-    if (result) {
-        editarTarefa(id)
-    }
+    subirProTopo()
+    editarTarefa(id)
 }
 
 function editarTarefa(id) {
@@ -180,6 +176,13 @@ function excluirTarefa(id) {
     })
     location.reload()
 }
+
+btnLimparLista.addEventListener("click", () => {
+    db.transaction(function (tx) {
+        tx.executeSql('DELETE FROM tarefas')
+    })
+    location.reload()
+})
 
 function confirmarAcao(acao) {
     var confirmacao = confirm(`Confirmar ação ${acao}?`)
