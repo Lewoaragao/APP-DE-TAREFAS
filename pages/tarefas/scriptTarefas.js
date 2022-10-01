@@ -24,8 +24,9 @@ const idUsuario = 1;
 
 // DATA
 var data = new Date()
-var dia = data.getDay()
-var mes = data.getMonth()
+var dia = data.getDate()
+// SOMA MAIS 1 POIS OS MESES RETORNADOS SÃO ENTRE 0 (= 1 JANEIRO) E 11 (= 12 DEZEMBRO)
+var mes = data.getMonth() + 1
 var ano = data.getFullYear()
 if (dia < 10) { dia = "0" + dia }
 if (mes < 10) { mes = "0" + mes }
@@ -34,10 +35,10 @@ var dataAtual = `${dia}/${mes}/${ano}`
 // REMOVENDO EVENTO ENVIAR DO FORM
 btnCriar.addEventListener("click", function () {
     if (nomeTarefa.value != "") {
-        let result = confirmarAcao("CRIAR")
-        if(result) {
-            criar()
-        }
+        // let result = confirmarAcao("CRIAR")
+        // if(result) {
+        criar()
+        // }
     } else {
         alert("Obrigatório preencher campo nome da tarefa...")
     }
@@ -88,9 +89,9 @@ function popularTarefas(tx, results) {
 
         for (i = 0; i < len; i++) {
             dados.innerHTML += `
-                    <tr class="px-0">
-                        <td class="px-0">${row[i].id}</td>
-                        <td class="px-0" id="tarefa${row[i].id}">${row[i].tarefa}</td>
+                    <tr class="pr-0">
+                        <td class="pr-0">${row[i].id}</td>
+                        <td class="pr-0" id="tarefa${row[i].id}">${row[i].tarefa}</td>
                         <td>${row[i].data_cadastro}</td>
                         <td>${row[i].estado_tarefa}</td>
                         <td>
@@ -151,21 +152,10 @@ function editarTarefa(id) {
 
     nomeTarefaEditada.value = tarefaEditar.innerText
     idTarefaEditada = id
-
-    nomeTarefaAntes = tarefaEditar.innerText
-}
-
-function lerNomeTarefaDepois(elemento) {
-    nomeTarefaDepois = elemento.value
-    console.log(nomeTarefaDepois)
 }
 
 btnConfirmarEdicao.addEventListener("click", () => {
-    if(nomeTarefaAntes != nomeTarefaDepois && nomeTarefaDepois != null) {
-        confirmarEdicao(idTarefaEditada)
-    } else {
-        alert("Mesmo nome de tarefa.")
-    }
+    confirmarEdicao(idTarefaEditada)
 })
 
 function confirmarEdicao(id) {
