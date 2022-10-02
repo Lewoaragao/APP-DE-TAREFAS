@@ -85,3 +85,23 @@ FOOTER.innerHTML = `
 function subirProTopo() {
     window.scrollTo(0, 0)
 }
+
+// CRIAR TABELA TAREFAS
+DB.transaction(function (tx) {
+    tx.executeSql('CREATE TABLE IF NOT EXISTS tarefas (id PRIMARY KEY, tarefa TEXT, data_cadastro TEXT, estado_tarefa TEXT, id_usuario INT)')
+})
+
+// CRIAR TABELA USUARIOS
+DB.transaction(function (tx) {
+    tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id PRIMARY KEY, usuario TEXT, senha TEXT, data_cadastro TEXT)')
+})
+
+// DATA DO DIA
+var data = new Date()
+var dia = data.getDate()
+// SOMA MAIS 1 POIS OS MESES RETORNADOS SÃO ENTRE 0 (= 1 JANEIRO) E 11 (= 12 DEZEMBRO)
+var mes = data.getMonth() + 1
+var ano = data.getFullYear()
+if (dia < 10) { dia = "0" + dia }
+if (mes < 10) { mes = "0" + mes }
+var dataAtual = `${dia}/${mes}/${ano}`
