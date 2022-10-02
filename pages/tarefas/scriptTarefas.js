@@ -17,18 +17,8 @@ var proximoId
 // USUÁRIO
 const idUsuario = 1;
 
-// DATA
-var data = new Date()
-var dia = data.getDate()
-// SOMA MAIS 1 POIS OS MESES RETORNADOS SÃO ENTRE 0 (= 1 JANEIRO) E 11 (= 12 DEZEMBRO)
-var mes = data.getMonth() + 1
-var ano = data.getFullYear()
-if (dia < 10) { dia = "0" + dia }
-if (mes < 10) { mes = "0" + mes }
-var dataAtual = `${dia}/${mes}/${ano}`
-
 // REMOVENDO EVENTO ENVIAR DO FORM
-btnCriar.addEventListener("click", () => {
+btnCriar.addEventListener('click', () => {
     if (nomeTarefa.value != "") {
         // let result = confirmarAcao("CRIAR")
         // if(result) {
@@ -48,21 +38,6 @@ document.addEventListener("keypress", (e) => {
         btnCriar.click()
     }
 })
-
-// CRIAR TABELA TAREFAS
-DB.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS tarefas (id PRIMARY KEY, tarefa TEXT, data_cadastro TEXT, estado_tarefa TEXT, id_usuario INT)')
-})
-
-// CRIAR TABELA USUARIOS
-DB.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id PRIMARY KEY, usuario TEXT, data_cadastro TEXT)')
-})
-
-// APAGAR TABELA
-// DB.transaction(function (tx) {
-//     tx.executeSql('DROP TABLE tarefas')
-// })
 
 // VALIDANDO POPULANDO TABELA DE TAREFAS
 DB.transaction(function (tx) {
@@ -142,7 +117,7 @@ function editarTarefa(id) {
     idTarefaEditada = id
 }
 
-btnConfirmarEdicao.addEventListener("click", () => {
+btnConfirmarEdicao.addEventListener('click', () => {
     confirmarEdicao(idTarefaEditada)
 })
 
@@ -174,7 +149,7 @@ function excluirTarefa(id) {
     location.reload()
 }
 
-btnLimparLista.addEventListener("click", () => {
+btnLimparLista.addEventListener('click', () => {
     var result = confirmarAcao("LIMPAR LISTA")
     if (result) {
         DB.transaction(function (tx) {
