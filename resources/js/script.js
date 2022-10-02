@@ -1,6 +1,10 @@
 // VARIÁVEIS GLOBAIS
 const NAV = document.querySelector('nav')
+const MENSAGEM_DADOS_FICTICIOS = document.querySelector('#mensagemUsarDadosFicticios')
 const FOOTER = document.querySelector('footer')
+
+// CRIANDO E ABRINDO CONEXÃO COM O BANCO DE DADOS
+const DB = openDatabase('dbAppTarefas', '1.0', 'App Tarefas', 2 * 1024 * 1024)
 
 // VARIÁVEIS LOCAIS
 var origem = window.location.origin
@@ -51,6 +55,11 @@ NAV.innerHTML = `
             </ul>
         </div>
     </div>
+`
+
+// MENSAGEM PARA USAR DADOS FICTÍCIOS
+MENSAGEM_DADOS_FICTICIOS.innerHTML = `
+    <p class="text-muted my-3">Usar dados fictícios, somente para teste.</p>
 `
 
 // FOOTER

@@ -1,6 +1,3 @@
-// CRIANDO BANCO DE DADOS
-var db = openDatabase('dbcrud', '1.0', 'CRUD Tarefas', 2 * 1024 * 1024)
-
 // ELEMENTOS DO HTML
 var dados = document.querySelector('#dados')
 var divCriarNomeTarefa = document.querySelector('#divCriarNomeTarefa')
@@ -53,22 +50,22 @@ document.addEventListener("keypress", (e) => {
 })
 
 // CRIAR TABELA TAREFAS
-db.transaction(function (tx) {
+DB.transaction(function (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS tarefas (id PRIMARY KEY, tarefa TEXT, data_cadastro TEXT, estado_tarefa TEXT, id_usuario INT)')
 })
 
 // CRIAR TABELA USUARIOS
-db.transaction(function (tx) {
+DB.transaction(function (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id PRIMARY KEY, usuario TEXT, data_cadastro TEXT)')
 })
 
 // APAGAR TABELA
-// db.transaction(function (tx) {
+// DB.transaction(function (tx) {
 //     tx.executeSql('DROP TABLE tarefas')
 // })
 
 // VALIDANDO POPULANDO TABELA DE TAREFAS
-db.transaction(function (tx) {
+DB.transaction(function (tx) {
     tx.executeSql('SELECT * FROM tarefas', [], popularTarefas, erroPopularTarefas)
 })
 
@@ -111,7 +108,7 @@ function erroPopularTarefas() {
 
 // PEGA ÚLTIMO ID
 function pegaUltimoID() {
-    db.transaction(function (tx) {
+    DB.transaction(function (tx) {
         tx.executeSql('SELECT id FROM tarefas ORDER BY id DESC', [], function (tx, results) {
             ultimoId = results.rows[0].id
             proximoId = ultimoId + 1
@@ -120,7 +117,7 @@ function pegaUltimoID() {
 }
 
 function criar() {
-    db.transaction(function (tx) {
+    DB.transaction(function (tx) {
         if (proximoId == null) {
             proximoId = 0;
         }
@@ -152,7 +149,7 @@ btnConfirmarEdicao.addEventListener("click", () => {
 function confirmarEdicao(id) {
     let result = confirmarAcao("CONFIRMAR EDIÇÃO")
     if (result) {
-        db.transaction(function (tx) {
+        DB.transaction(function (tx) {
             tx.executeSql('UPDATE tarefas SET tarefa = ? WHERE id = ?', [nomeTarefaEditada.value, id])
         })
 
@@ -171,7 +168,7 @@ function excluir(id) {
 }
 
 function excluirTarefa(id) {
-    db.transaction(function (tx) {
+    DB.transaction(function (tx) {
         tx.executeSql('DELETE FROM tarefas WHERE id = ?', [id])
     })
     location.reload()
@@ -180,7 +177,7 @@ function excluirTarefa(id) {
 btnLimparLista.addEventListener("click", () => {
     var result = confirmarAcao("LIMPAR LISTA")
     if (result) {
-        db.transaction(function (tx) {
+        DB.transaction(function (tx) {
             tx.executeSql('DELETE FROM tarefas')
         })
         location.reload()
