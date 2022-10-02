@@ -1,0 +1,1 @@
+var btnCadastrar = document.querySelector('#btnCadastrar')
