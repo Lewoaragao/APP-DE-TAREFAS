@@ -58,9 +58,11 @@ NAV.innerHTML = `
 `
 
 // MENSAGEM PARA USAR DADOS FICTÍCIOS
-MENSAGEM_DADOS_FICTICIOS.innerHTML = `
+if(MENSAGEM_DADOS_FICTICIOS != null) {
+    MENSAGEM_DADOS_FICTICIOS.innerHTML = `
     <p class="text-muted my-3">Usar dados fictícios, somente para teste.</p>
 `
+}
 
 // FOOTER
 FOOTER.innerHTML = `
