@@ -7,7 +7,6 @@ var btnCadastrar = document.querySelector('#btnCadastrar')
 // VARIÁVEIS GERAIS
 var ultimoId
 var proximoId
-var nomeExiste
 
 btnCadastrar.addEventListener('click', function () {
     if (nome.value == '') {
@@ -29,27 +28,6 @@ btnCadastrar.addEventListener('click', function () {
         senha.focus()
     } else {
         verificaNome()
-
-        if (nomeExiste == false) {
-            pegaUltimoID()
-
-            DB.transaction(function (tx) {
-                if (proximoId == null) {
-                    proximoId = 0;
-                }
-
-                tx.executeSql('INSERT INTO usuarios VALUES (?, ?, ?, ?)', [proximoId, nome.value, senha.value, dataAtual])
-
-                alert('Usuário cadastrado com sucesso!')
-                location.href = `${LOCALHOST}/index.html`
-            })
-        } else {
-            alert('Nome de usuário já existe.')
-            nome.value = ''
-            senha.value = ''
-            repitaSenha.value = ''
-            nome.focus()
-        }
     }
 })
 
@@ -74,17 +52,41 @@ function verificandoUsuario(tx, results) {
     let len = results.rows.length, i;
     let row = results.rows
 
-    for (i = 0; i < len; i++) {
-        if (row[i].usuario == nome.value) {
-            nomeExiste = true
-        } else {
-            nomeExiste = false
+    if(len == 0) {
+        cadastraUsuario()
+    } else {
+        for (i = 0; i < len; i++) {
+            console.log(row[i].usuario)
+            if (row[i].usuario == nome.value) {
+                nome.value = ''
+                senha.value = ''
+                repitaSenha.value = ''
+                nome.focus()
+                return alert('Nome de usuário já existe.')
+            } else {
+                cadastraUsuario()
+            }
         }
     }
 }
 
 function erroAoVerificarUsuario() {
     alert("Erro ao verificar usuários.")
+}
+
+function cadastraUsuario() {
+    pegaUltimoID()
+
+    DB.transaction(function (tx) {
+        if (proximoId == null) {
+            proximoId = 0;
+        }
+
+        tx.executeSql('INSERT INTO usuarios VALUES (?, ?, ?, ?)', [proximoId, nome.value, senha.value, dataAtual])
+
+        alert('Usuário cadastrado com sucesso!')
+        location.href = `${LOCALHOST}/index.html`
+    })
 }
 
 // MAPEAMENTO DE ATALHOS
