@@ -58,9 +58,12 @@ NAV.innerHTML = `
 `
 
 // MENSAGEM PARA USAR DADOS FICTÍCIOS
-if(MENSAGEM_DADOS_FICTICIOS != null) {
+if (MENSAGEM_DADOS_FICTICIOS != null) {
     MENSAGEM_DADOS_FICTICIOS.innerHTML = `
-    <p class="text-muted my-3">Usar dados fictícios, somente para teste.</p>
+    <p class="text-muted my-3 small">
+    Usar dados fictícios, somente para teste. 
+        Os dados só ficam armazenados no seu navegador e só pode ser visto no seu dispositivo.
+    </p>
 `
 }
 
