@@ -84,9 +84,6 @@ const NAV_USUARIO_DESLOGADO = `
                     <a class="nav-link" href="${LOCALHOST}/pages/login/login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${LOCALHOST}/pages/perfil/perfil.html">Perfil</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="${LOCALHOST}/pages/sobre/sobre.html">Sobre</a>
                 </li>
             </ul>
