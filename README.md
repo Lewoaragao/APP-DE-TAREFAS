@@ -15,14 +15,18 @@
 * Tarefas
 - [x] Tela de tarefas
 - [x] Lógica de tarefas
+- [x] Tarefas somente do usuário logado
+
+* Menu
+- [x] Dinâmico quando usuário logado ou deslogado
 
 * Cadastro
-- [ ] Tela de cadastro
-- [ ] Lógica de cadastro
+- [x] Tela de cadastro
+- [x] Lógica de cadastro
 
 * Login
-- [ ] Tela de login
-- [ ] Lógica de login
+- [x] Tela de login
+- [x] Lógica de login
 
 * Início
 - [ ] Tela de início
@@ -38,3 +42,4 @@
 - JavaScript
 - SQLite
 - Web SQL
+- Sessio Storage
