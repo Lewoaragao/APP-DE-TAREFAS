@@ -31,8 +31,6 @@ btnCriar.addEventListener('click', () => {
 
 // MAPEAMENTO DE ATALHOS
 document.addEventListener("keypress", (e) => {
-    // console.log(e.key)
-
     // TECLA
     if (e.key == "Enter") {
         btnCriar.click()

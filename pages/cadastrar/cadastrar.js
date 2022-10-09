@@ -56,7 +56,6 @@ function verificandoUsuario(tx, results) {
         cadastraUsuario()
     } else {
         for (i = 0; i < len; i++) {
-            console.log(row[i].usuario)
             if (row[i].usuario == nome.value) {
                 nome.value = ''
                 senha.value = ''
@@ -91,8 +90,6 @@ function cadastraUsuario() {
 
 // MAPEAMENTO DE ATALHOS
 document.addEventListener("keypress", (e) => {
-    // console.log(e.key)
-
     // TECLA
     if (e.key == "Enter") {
         btnCadastrar.click()

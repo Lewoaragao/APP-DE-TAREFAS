@@ -27,12 +27,10 @@ function verificaConta() {
 function verificandoAcesso(tx, results) {
     let len = results.rows.length, i
     let row = results.rows
-    console.log(len);
 
     if(len == 0) {
         alert('Nenhum usuário cadastrado.')
     } else {
-        console.log('entrou');
         for (i = 0; i < len; i++) {
             if (row[i].usuario == nome.value && row[i].senha == senha.value) {
                 STORAGE.setItem("idUsuarioLogado", row[i].id)
