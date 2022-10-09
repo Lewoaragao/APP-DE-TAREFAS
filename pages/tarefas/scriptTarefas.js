@@ -15,7 +15,7 @@ var ultimoId
 var proximoId
 
 // USUÁRIO
-const idUsuario = 1;
+const idUsuario = 0;
 
 // REMOVENDO EVENTO ENVIAR DO FORM
 btnCriar.addEventListener('click', () => {
@@ -46,8 +46,8 @@ DB.transaction(function (tx) {
 
 // POPULANDO TABELA DE TAREFAS
 function popularTarefas(tx, results) {
-    var len = results.rows.length, i;
-    var row = results.rows
+    let len = results.rows.length, i;
+    let row = results.rows
 
     if (len != 0) {
         pegaUltimoID()
