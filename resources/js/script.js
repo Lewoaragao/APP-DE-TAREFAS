@@ -2,6 +2,7 @@
 const NAV = document.querySelector('nav')
 const MENSAGEM_DADOS_FICTICIOS = document.querySelector('#mensagemUsarDadosFicticios')
 const FOOTER = document.querySelector('footer')
+const STORAGE = sessionStorage
 
 // CRIANDO E ABRINDO CONEXÃO COM O BANCO DE DADOS
 const DB = openDatabase('dbAppTarefas', '1.0', 'App Tarefas', 2 * 1024 * 1024)
@@ -22,9 +23,13 @@ switch (origem) {
         break
 }
 
+function deslogar() {
+    STORAGE.removeItem("idUsuarioLogado")
+}
+
 // ADICIONANDO DINAMICAMENTE ELEMENTOS NO HTML
 // MENU GERAL
-NAV.innerHTML = `
+const NAV_USUARIO_LOGADO = `
     <div class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <a class="navbar-brand" href="${LOCALHOST}/index.html">LISTA DE TAREFAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -34,6 +39,9 @@ NAV.innerHTML = `
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="${LOCALHOST}/index.html">Início</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${LOCALHOST}/pages/cadastrar/cadastrar.html">Cadastrar</a>
                 </li>
@@ -50,7 +58,36 @@ NAV.innerHTML = `
                     <a class="nav-link" href="${LOCALHOST}/pages/sobre/sobre.html">Sobre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${LOCALHOST}/">Sair</a>
+                    <a class="nav-link" onclick="deslogar()" href="${LOCALHOST}/">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+`
+const NAV_USUARIO_DESLOGADO = `
+    <div class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a class="navbar-brand" href="${LOCALHOST}/index.html">LISTA DE TAREFAS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="${LOCALHOST}/index.html">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${LOCALHOST}/pages/cadastrar/cadastrar.html">Cadastrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${LOCALHOST}/pages/login/login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${LOCALHOST}/pages/perfil/perfil.html">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${LOCALHOST}/pages/sobre/sobre.html">Sobre</a>
                 </li>
             </ul>
         </div>
@@ -108,3 +145,9 @@ var ano = data.getFullYear()
 if (dia < 10) { dia = "0" + dia }
 if (mes < 10) { mes = "0" + mes }
 var dataAtual = `${dia}/${mes}/${ano}`
+
+if (STORAGE.getItem("idUsuarioLogado") != null) {
+    NAV.innerHTML = NAV_USUARIO_LOGADO
+} else {
+    NAV.innerHTML = NAV_USUARIO_DESLOGADO
+}
