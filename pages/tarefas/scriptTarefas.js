@@ -15,7 +15,7 @@ var ultimoId
 var proximoId
 
 // USUÁRIO
-const idUsuario = 0;
+const idUsuario = STORAGE.getItem("idUsuarioLogado")
 
 // REMOVENDO EVENTO ENVIAR DO FORM
 btnCriar.addEventListener('click', () => {
@@ -41,7 +41,7 @@ document.addEventListener("keypress", (e) => {
 
 // VALIDANDO POPULANDO TABELA DE TAREFAS
 DB.transaction(function (tx) {
-    tx.executeSql('SELECT * FROM tarefas', [], popularTarefas, erroPopularTarefas)
+    tx.executeSql("SELECT * FROM tarefas WHERE id_usuario = ?", [idUsuario], popularTarefas, erroPopularTarefas)
 })
 
 // POPULANDO TABELA DE TAREFAS
