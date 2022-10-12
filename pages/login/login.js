@@ -28,24 +28,34 @@ function verificandoAcesso(tx, results) {
     let len = results.rows.length, i
     let row = results.rows
 
-    if(len == 0) {
-        alert('Nenhum usuário cadastrado.')
+    if(STORAGE.getItem("idUsuarioLogado") != null) {
+        alert('Já existe um usuário logado.')
     } else {
-        for (i = 0; i < len; i++) {
-            if (row[i].usuario == nome.value && row[i].senha == senha.value) {
-                STORAGE.setItem("idUsuarioLogado", row[i].id)
-                window.location = `${LOCALHOST}/pages/tarefas/tarefas.html`
+        if(len == 0) {
+            alert('Nenhum usuário cadastrado.')
+        } else {
+            for (i = 0; i < len; i++) {
+                if (row[i].usuario == nome.value && row[i].senha == senha.value) {
+                    STORAGE.setItem("idUsuarioLogado", row[i].id)
+                    window.location = `${LOCALHOST}/pages/tarefas/tarefas.html`
+                }
+            }
+
+            if(STORAGE.getItem("idUsuarioLogado") == null) {
+                alert('Usuário não cadastrado.')
             }
         }
-
-        if(STORAGE.getItem("idUsuarioLogado") == null) {
-            alert('Usuário não cadastrado.')
-        }
     }
-
 }
 
 function erroAoVerificarAcesso() {
     alert("Erro ao verificar acesso.")
 }
 
+// MAPEAMENTO DE ATALHOS
+document.addEventListener("keypress", (e) => {
+    // TECLA
+    if (e.key == "Enter") {
+        btnLogar.click()
+    }
+})
