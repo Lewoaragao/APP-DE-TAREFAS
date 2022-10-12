@@ -12,25 +12,20 @@
 
 ### <p id="emDesenvolvimento">Em desenvolvimento</p>
 
-* Tarefas
-- [x] Tela de tarefas
-- [x] Lógica de tarefas
-- [x] Tarefas somente do usuário logado
-
-* Menu
-- [x] Dinâmico quando usuário logado ou deslogado
-
-* Cadastro
-- [x] Tela de cadastro
-- [x] Lógica de cadastro
-
-* Login
-- [x] Tela de login
-- [x] Lógica de login
-
-* Início
+* Telas
 - [ ] Tela de início
 - [ ] Tela de sobre
+- [ ] Tela de perfil
+- [x] Tela de cadastro
+- [x] Tela de login
+- [x] Tela de tarefas
+
+* Lógicas
+- [x] Lógica de cadastro
+- [x] Lógica de login
+- [x] Lógica de tarefas
+- [x] Tarefas somente do usuário logado
+- [x] Menu dinâmico quando usuário logado ou deslogado
 
 ### <p id="comoContribuir">Como contribuir</p>
 > Pode ser feito uma issue e(ou) abrir um pull request com a melhoria ou ideia proposta.
