@@ -37,4 +37,4 @@
 - JavaScript
 - SQLite
 - Web SQL
-- Sessio Storage
+- Session Storage
