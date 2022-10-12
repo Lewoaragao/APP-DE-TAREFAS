@@ -11,8 +11,8 @@ var btnConfirmarEdicao = document.querySelector('#btnConfirmarEdicao')
 
 // VARIÁVEIS GERAIS
 var estadoTarefa = "Não feita"
-var ultimoId
-var proximoId
+var ultimoId = null
+var proximoId = null
 
 // USUÁRIO
 const idUsuario = STORAGE.getItem("idUsuarioLogado")
@@ -20,10 +20,7 @@ const idUsuario = STORAGE.getItem("idUsuarioLogado")
 // REMOVENDO EVENTO ENVIAR DO FORM
 btnCriar.addEventListener('click', () => {
     if (nomeTarefa.value != "") {
-        // let result = confirmarAcao("CRIAR")
-        // if(result) {
         criar()
-        // }
     } else {
         alert("Obrigatório preencher campo nome da tarefa...")
     }
@@ -48,8 +45,6 @@ function popularTarefas(tx, results) {
     let row = results.rows
 
     if (len != 0) {
-        pegaUltimoID()
-
         for (i = 0; i < len; i++) {
             dados.innerHTML += `
                     <tr class="pr-0">
@@ -79,23 +74,20 @@ function erroPopularTarefas() {
     alert("Erro ao popular tarefas.")
 }
 
-// PEGA ÚLTIMO ID
-function pegaUltimoID() {
-    DB.transaction(function (tx) {
-        tx.executeSql('SELECT id FROM tarefas ORDER BY id DESC', [], function (tx, results) {
-            ultimoId = results.rows[0].id
-            proximoId = ultimoId + 1
-        })
-    })
-}
-
 function criar() {
     DB.transaction(function (tx) {
-        if (proximoId == null) {
-            proximoId = 0;
-        }
+        tx.executeSql('SELECT id FROM tarefas ORDER BY id DESC LIMIT 1', [], function (tx, results) {
+            ultimoId = results.rows[0].id
+            console.log(results)
+            console.log(results.rows[0])
+            proximoId = ultimoId + 1
 
-        tx.executeSql('INSERT INTO tarefas VALUES (?, ?, ?, ?, ?)', [proximoId, nomeTarefa.value, dataAtual, estadoTarefa, idUsuario])
+            if (proximoId == null) {
+                proximoId = 0;
+            }
+            
+            tx.executeSql('INSERT INTO tarefas VALUES (?, ?, ?, ?, ?)', [proximoId, nomeTarefa.value, dataAtual, estadoTarefa, idUsuario])
+        })
     })
     location.reload()
 }
@@ -151,7 +143,7 @@ btnLimparLista.addEventListener('click', () => {
     var result = confirmarAcao("LIMPAR LISTA")
     if (result) {
         DB.transaction(function (tx) {
-            tx.executeSql('DELETE FROM tarefas')
+            tx.executeSql('DELETE FROM tarefas WHERE id_usuario = ? ', [idUsuario])
         })
         location.reload()
     }

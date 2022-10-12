@@ -46,9 +46,6 @@ const NAV_USUARIO_LOGADO = `
                     <a class="nav-link" href="${LOCALHOST}/pages/cadastrar/cadastrar.html">Cadastrar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${LOCALHOST}/pages/login/login.html">Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="${LOCALHOST}/pages/tarefas/tarefas.html">Tarefas</a>
                 </li>
                 <li class="nav-item">

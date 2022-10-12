@@ -34,10 +34,12 @@ function verificandoAcesso(tx, results) {
         for (i = 0; i < len; i++) {
             if (row[i].usuario == nome.value && row[i].senha == senha.value) {
                 STORAGE.setItem("idUsuarioLogado", row[i].id)
-                return window.location = `${LOCALHOST}/pages/tarefas/tarefas.html`
-            } else {
-                alert('Usuário não cadastrado.')
+                window.location = `${LOCALHOST}/pages/tarefas/tarefas.html`
             }
+        }
+
+        if(STORAGE.getItem("idUsuarioLogado") == null) {
+            alert('Usuário não cadastrado.')
         }
     }
 
